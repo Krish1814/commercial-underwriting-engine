@@ -155,8 +155,11 @@ class EnterpriseUnderwritingEngine:
         return roc_auc_score(y_test, probs), classification_report(y_test, preds, output_dict=True)
 
     def eval_pre_disbursal_fraud_gate(self, metrics, challenge_passed=True):
-        if metrics.get('hours_since_renumber', 999) <= 72: return "DECLINE_ATO_RENUMBER_72H"
-        if metrics.get('hours_since_shared_device', 999) <= 72: return "DECLINE_ATO_SHARED_DEVICE_72H"
-        if metrics.get('hours_since_new_device', 999) <= 72: return "DECLINE_ATO_NEW_DEVICE_72H"
-        if metrics.get('hours_since_unlock', 999) <= 72: return "DECLINE_ATO_ACCOUNT_UNLOCK_72H"
-        if metrics.get('hours_since_phone_change', 999) <= 24 or metrics.get('hours_since_recovery', 999) <= 24:
+        if metrics.get('hours_since_renumber', 999) <= 72: 
+            return "DECLINE_ATO_RENUMBER_72H"
+        if metrics.get('hours_since_shared_device', 999) <= 72: 
+            return "DECLINE_ATO_SHARED_DEVICE_72H"
+        if metrics.get('hours_since_new_device', 999) <= 72: 
+            return "DECLINE_ATO_NEW_DEVICE_72H"
+        if metrics.get('hours_since_unlock', 999) <= 72: 
+            return "DECLINE_ATO_ACCOUNT_UNLOCK_72H"
